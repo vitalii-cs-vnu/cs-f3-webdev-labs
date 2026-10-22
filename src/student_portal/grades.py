@@ -7,7 +7,7 @@ from student_portal.exceptions import InvalidGradeError
 
 MIN_SCORE = 0
 MAX_SCORE = 100
-ECTS_LETTERS = ("A", "B", "C", "D", "E", "FX", "F")
+ECTS_LETTERS = ("A", "B", "C", "D", "E", "Fx")
 
 
 def ects_grade(score: int) -> str:
@@ -17,16 +17,14 @@ def ects_grade(score: int) -> str:
             return "A"
         case s if s >= 82:
             return "B"
-        case s if s >= 74:
+        case s if s >= 75:
             return "C"
-        case s if s >= 64:
+        case s if s >= 67:
             return "D"
         case s if s >= 60:
             return "E"
-        case s if s >= 35:
-            return "FX"
         case _:
-            return "F"
+            return "Fx"
 
 
 @dataclass(frozen=True, slots=True)
