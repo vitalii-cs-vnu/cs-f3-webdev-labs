@@ -1,6 +1,6 @@
 [project]
 name = "student-portal"
-version = "0.1.0"
+version = "0.3.0"
 description = "Система управління студентами"
 readme = "README.md"
 authors = [
@@ -24,5 +24,9 @@ select = ["E", "W", "F", "I", "N", "UP", "B", "SIM"]
 
 [dependency-groups]
 dev = [
+    "mypy>=2.4.0",
     "ruff>=0.17.1",
 ]
+
+[tool.mypy]
+strict = true
