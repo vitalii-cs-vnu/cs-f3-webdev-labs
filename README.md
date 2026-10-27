@@ -39,3 +39,21 @@ uv run pytest -k journal # лише тести, у назві яких є «jour
 ```
 
 Тести лежать у теці `tests/`, спільні фікстури - у `tests/conftest.py`. Тести не змінюють `data/`: файли створюються в тимчасовій теці `tmp_path`.
+
+## Сервер деканату
+
+Пункт меню 11 завантажує групу з сервера деканату за адресою зі змінної середовища `DEKANAT_URL` у форматі `data/group.json`. Для перевірки без справжнього сервера роздайте файл локально:
+
+```bash
+uv run python -m http.server 8001 -d data
+DEKANAT_URL=http://127.0.0.1:8001/group.json uv run student-portal
+```
+
+## Покриття і CI
+
+```bash
+uv run pytest --cov                        # покриття, поріг - 90 %
+uv run pytest --cov --cov-report=html      # звіт у htmlcov/index.html
+```
+
+GitHub Actions (`.github/workflows/ci.yml`) на кожен pull request запускає Ruff, mypy і тести з покриттям; HTML-звіт зберігається як артефакт `coverage-html`.
