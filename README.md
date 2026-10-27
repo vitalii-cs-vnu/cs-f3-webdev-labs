@@ -29,3 +29,13 @@ uv run ruff check .
 uv run ruff format --check .
 uv run mypy src
 ```
+
+## Тести
+
+```bash
+uv run pytest            # усі тести
+uv run pytest -v         # з назвою кожного тесту
+uv run pytest -k journal # лише тести, у назві яких є «journal»
+```
+
+Тести лежать у теці `tests/`, спільні фікстури - у `tests/conftest.py`. Тести не змінюють `data/`: файли створюються в тимчасовій теці `tmp_path`.
